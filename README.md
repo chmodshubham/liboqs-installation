@@ -3,31 +3,39 @@
 ## Prerequisites
 
 - **OS**: Ubuntu 22.04
-- **Memory**: 4-8GB RAM minimum
-- **Disk Space**: >5GB
+- **Memory**: At least 4-8 GB
+- **Disk Space**: More than 5 GB
+
+Install required tools and libraries:
 
 ```bash
 sudo apt update
-sudo apt install astyle cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz python3-yaml valgrind
+sudo apt install astyle cmake gcc ninja-build libssl-dev \
+                 python3-pytest python3-pytest-xdist unzip xsltproc \
+                 doxygen graphviz python3-yaml valgrind
 ```
 
 ## Quick Installation
 
 ```bash
+# Get the source code
 git clone https://github.com/open-quantum-safe/liboqs.git
 cd liboqs
 
+# Create build directory
 mkdir build && cd build
+
+# Configure build with constant-time testing enabled
 cmake -GNinja .. \
     -DCMAKE_BUILD_TYPE=Debug \
     -DOQS_ENABLE_TEST_CONSTANT_TIME=ON \
     -DOQS_DIST_BUILD=ON
 
-# Additional Optional Flags
-#    -DCMAKE_INSTALL_PREFIX=/usr/local \     # Installation directory
-#    -DOQS_USE_OPENSSL=ON \                  # Use OpenSSL for primitives
-#    -DOQS_ENABLE_KEM_CLASSIC_MCELIECE=OFF \ # Disable slow algorithms for testing
-#    -DBUILD_SHARED_LIBS=ON                  # Build shared libraries
+# Optional extra flags you can add:
+# -DCMAKE_INSTALL_PREFIX=/usr/local      # Install location
+# -DOQS_USE_OPENSSL=ON                   # Use OpenSSL primitives
+# -DOQS_ENABLE_KEM_CLASSIC_MCELIECE=OFF  # Skip slow algorithms
+# -DBUILD_SHARED_LIBS=ON                  # Build shared libs
 
 # Build the library
 ninja
