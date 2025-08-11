@@ -49,6 +49,10 @@ ninja
 python3 ../tests/test_constant_time.py
 ```
 
+Ignore the extra line breaks — I pressed Enter multiple times to ensure the program hadn’t frozen.
+
+<img width="1920" height="887" alt="image" src="https://github.com/user-attachments/assets/d37daf2e-9b8c-4eaf-a5a4-724213c08462" />
+
 ### Test Specific Algorithms
 ```bash
 # Test only Kyber
